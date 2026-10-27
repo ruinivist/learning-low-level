@@ -1,0 +1,416 @@
+{
+  "source": "https://pages.cs.wisc.edu/~remzi/OSTEP/",
+  "downloaded_at": "2026-10-27T23:53:24Z",
+  "chapters": [
+    {
+      "chapter": 3,
+      "title": "Dialogue",
+      "path": "01-virtualization/03-dialogue-virtualization.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dialogue-virtualization.pdf",
+      "bytes": 29687,
+      "sha256": "2a599f6f4e64a00db08e5ebb739f4b591ace57668b37694ad44d9fd56bb76fbd"
+    },
+    {
+      "chapter": 4,
+      "title": "Processes",
+      "path": "01-virtualization/04-cpu-intro.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf",
+      "bytes": 106900,
+      "sha256": "d4c7a5200fa104f6d5af7d845dc65b99b17ea55fb1fed6a151a7c4d1353bd6e8"
+    },
+    {
+      "chapter": 5,
+      "title": "Process API",
+      "path": "01-virtualization/05-cpu-api.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf",
+      "bytes": 122017,
+      "sha256": "00aa608424bbdf5e9d6ef17d47e7595a5455a42e74ad3e6c5913603aa7e8ea7b"
+    },
+    {
+      "chapter": 6,
+      "title": "Direct Execution",
+      "path": "01-virtualization/06-cpu-mechanisms.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf",
+      "bytes": 134592,
+      "sha256": "ad9c3ae46f0d695744008a0faa1dd104ebf033eb0d5a0e14411146b2d53d9054"
+    },
+    {
+      "chapter": 7,
+      "title": "CPU Scheduling",
+      "path": "01-virtualization/07-cpu-sched.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+      "bytes": 118326,
+      "sha256": "0912b1a34977a70704b921ecfdf0dd65300e038a3eb4e5e57b2d9c38f66b63c3"
+    },
+    {
+      "chapter": 8,
+      "title": "Multi-level Feedback",
+      "path": "01-virtualization/08-cpu-sched-mlfq.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf",
+      "bytes": 115638,
+      "sha256": "96241b4e6708991740560334a1f67516c3c68eb3e6a570af7b03cdb4b32918db"
+    },
+    {
+      "chapter": 9,
+      "title": "Lottery Scheduling",
+      "path": "01-virtualization/09-cpu-sched-lottery.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-lottery.pdf",
+      "bytes": 138852,
+      "sha256": "d4443bc142b7c134280c6d284e887b0768642583eaddda674dfa6975f483aa5a"
+    },
+    {
+      "chapter": 10,
+      "title": "Multi-CPU Scheduling",
+      "path": "01-virtualization/10-cpu-sched-multi.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-multi.pdf",
+      "bytes": 118032,
+      "sha256": "302396e55bb9ff0d509a16393ecb46dcb614225a2ee2cf9fef8e8a54eb0dc3e1"
+    },
+    {
+      "chapter": 11,
+      "title": "Summary",
+      "path": "01-virtualization/11-cpu-dialogue.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-dialogue.pdf",
+      "bytes": 33322,
+      "sha256": "ba97a33d7b878ccd60915f5397463ca38cbf7530a202fcde4128ad66df35b77e"
+    },
+    {
+      "chapter": 12,
+      "title": "Dialogue",
+      "path": "01-virtualization/12-dialogue-vm.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dialogue-vm.pdf",
+      "bytes": 31767,
+      "sha256": "fad4df33438163d2310f750c686329139ab43f1938edb95418f8e95ee6d529d2"
+    },
+    {
+      "chapter": 13,
+      "title": "Address Spaces",
+      "path": "01-virtualization/13-vm-intro.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf",
+      "bytes": 95320,
+      "sha256": "c57de8420ea7bc8afbca5ce3ba92bcc0b32d5f719f4ab613dd9ceb698d537acc"
+    },
+    {
+      "chapter": 14,
+      "title": "Memory API",
+      "path": "01-virtualization/14-vm-api.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-api.pdf",
+      "bytes": 97113,
+      "sha256": "959dba1dbd41e3e18e3d97269cc405dcc9ea0872d761d09bf3eec14f3f8273f3"
+    },
+    {
+      "chapter": 15,
+      "title": "Address Translation",
+      "path": "01-virtualization/15-vm-mechanism.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf",
+      "bytes": 130259,
+      "sha256": "38d81af0ae91743ee39c08c71be620d244b73496536c68c22ccebc2b8a0344a7"
+    },
+    {
+      "chapter": 16,
+      "title": "Segmentation",
+      "path": "01-virtualization/16-vm-segmentation.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf",
+      "bytes": 106854,
+      "sha256": "f9511d43148cc005e9c2d992deff04c16eecbee7269e7568e4b50ab49ddbb2e8"
+    },
+    {
+      "chapter": 17,
+      "title": "Free Space Management",
+      "path": "01-virtualization/17-vm-freespace.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf",
+      "bytes": 135110,
+      "sha256": "e843d8451f4c030ae2a7b1af0e5fb493bcfbfa9e0bd44681bda030019d974e2e"
+    },
+    {
+      "chapter": 18,
+      "title": "Introduction to Paging",
+      "path": "01-virtualization/18-vm-paging.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf",
+      "bytes": 117219,
+      "sha256": "0307d990a5638c37d59fb8ca67de75a0afc439461239fa660a7c948dce3bc6d5"
+    },
+    {
+      "chapter": 19,
+      "title": "Translation Lookaside Buffers",
+      "path": "01-virtualization/19-vm-tlbs.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf",
+      "bytes": 150670,
+      "sha256": "202953f283487b812a9a97c17f4a3cb3a9b3e80a300cc6467c3080ffb0be013e"
+    },
+    {
+      "chapter": 20,
+      "title": "Advanced Page Tables",
+      "path": "01-virtualization/20-vm-smalltables.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-smalltables.pdf",
+      "bytes": 139762,
+      "sha256": "45eced8581a51497919ed170b4b8631b5ab7ecbad5c77387d0868f52cec6c43f"
+    },
+    {
+      "chapter": 21,
+      "title": "Swapping: Mechanisms",
+      "path": "01-virtualization/21-vm-beyondphys.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf",
+      "bytes": 107756,
+      "sha256": "2d59f70e76be4e9a78eec457b8e20e9941c0c6ec91bb158297695900415459d3"
+    },
+    {
+      "chapter": 22,
+      "title": "Swapping: Policies",
+      "path": "01-virtualization/22-vm-beyondphys-policy.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf",
+      "bytes": 199152,
+      "sha256": "a6f13af44cae11965876f652e836a1a40603be3e8dfd5336568b69a6007ca4c3"
+    },
+    {
+      "chapter": 23,
+      "title": "Complete VM Systems",
+      "path": "01-virtualization/23-vm-complete.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-complete.pdf",
+      "bytes": 172402,
+      "sha256": "c487f8c297177e3f463b21806082537cb9b9f8b0c8c982ca27dc889803ace36c"
+    },
+    {
+      "chapter": 24,
+      "title": "Summary",
+      "path": "01-virtualization/24-vm-dialogue.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-dialogue.pdf",
+      "bytes": 34012,
+      "sha256": "8e18d521fe1b6f58761723bd3c02f357defb9f55a43e90e357e60047372808fe"
+    },
+    {
+      "chapter": 25,
+      "title": "Dialogue",
+      "path": "02-concurrency/25-dialogue-concurrency.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dialogue-concurrency.pdf",
+      "bytes": 32657,
+      "sha256": "b654dd0af273c8e5fdc9ddce5c4097ce7d52f3c1981e5529b6137427207321e3"
+    },
+    {
+      "chapter": 26,
+      "title": "Concurrency and Threads",
+      "path": "02-concurrency/26-threads-intro.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf",
+      "bytes": 125231,
+      "sha256": "04eebf12233463d54c6b39352bbea644241b308312cabd568b24b9aa3b7e4d1e"
+    },
+    {
+      "chapter": 27,
+      "title": "Thread API",
+      "path": "02-concurrency/27-threads-api.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf",
+      "bytes": 100720,
+      "sha256": "ea053697dcf6480a346dfd2ae4b9c7b5d292ccecfa7e38eb1bd05136a7f96ce6"
+    },
+    {
+      "chapter": 28,
+      "title": "Locks",
+      "path": "02-concurrency/28-threads-locks.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf",
+      "bytes": 171902,
+      "sha256": "349b3b3251a178e8bd725dc710cd2b9a4d30f34a7491390bc7c1b53c015d1515"
+    },
+    {
+      "chapter": 29,
+      "title": "Locked Data Structures",
+      "path": "02-concurrency/29-threads-locks-usage.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks-usage.pdf",
+      "bytes": 121557,
+      "sha256": "48d67442fc17dc1e0b6d3a68f1e29d2630eb30de4606c1fffe86124424654ea6"
+    },
+    {
+      "chapter": 30,
+      "title": "Condition Variables",
+      "path": "02-concurrency/30-threads-cv.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf",
+      "bytes": 128770,
+      "sha256": "77a2fb7913c44af3864afe3dc789b3ce0d875a82df20b9690bba1eb8bee94839"
+    },
+    {
+      "chapter": 31,
+      "title": "Semaphores",
+      "path": "02-concurrency/31-threads-sema.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf",
+      "bytes": 150277,
+      "sha256": "991a6a2edbd604c6e2c9b52c9505ff63db92fd2bca4c294a252bdfc0dbed38fb"
+    },
+    {
+      "chapter": 32,
+      "title": "Concurrency Bugs",
+      "path": "02-concurrency/32-threads-bugs.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf",
+      "bytes": 130552,
+      "sha256": "dc8c3a7b64ff35fe626838a877cc1759d33bce6104ab30a0221268b3ee9859d4"
+    },
+    {
+      "chapter": 33,
+      "title": "Event-based Concurrency",
+      "path": "02-concurrency/33-threads-events.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-events.pdf",
+      "bytes": 106082,
+      "sha256": "a8906e84dd6a7fbe9b3f46c9a3a873e084d1928d304591be6d472f5e5fa394c9"
+    },
+    {
+      "chapter": 34,
+      "title": "Summary",
+      "path": "02-concurrency/34-threads-dialogue.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-dialogue.pdf",
+      "bytes": 32085,
+      "sha256": "02dcd682a855193a904fffb56d17ca27b53681e249ebc0fd282587bfc959e9d6"
+    },
+    {
+      "chapter": 35,
+      "title": "Dialogue",
+      "path": "03-persistence/35-dialogue-persistence.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dialogue-persistence.pdf",
+      "bytes": 27610,
+      "sha256": "2ac385ca5924e6bad94e721b3e8859e6e93cf6abf3654cd5d31fe2b532bc16ad"
+    },
+    {
+      "chapter": 36,
+      "title": "I/O Devices",
+      "path": "03-persistence/36-file-devices.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf",
+      "bytes": 119742,
+      "sha256": "08546bc068699f5a8be8df72417bd2b4e282b08f8c2a1fe056ca09bfdf0533d5"
+    },
+    {
+      "chapter": 37,
+      "title": "Hard Disk Drives",
+      "path": "03-persistence/37-file-disks.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-disks.pdf",
+      "bytes": 154732,
+      "sha256": "8bebaab15858c28b7d70c72d97d685103714f423b4581b2e0d5fbb1671764e2b"
+    },
+    {
+      "chapter": 38,
+      "title": "Redundant Disk Arrays (RAID)",
+      "path": "03-persistence/38-file-raid.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-raid.pdf",
+      "bytes": 170255,
+      "sha256": "3d88a8b2d47247572a6d424f9b6f5789a6f0b8a39ce1bb8d9f6ef4403fd9e340"
+    },
+    {
+      "chapter": 39,
+      "title": "Files and Directories",
+      "path": "03-persistence/39-file-intro.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf",
+      "bytes": 212094,
+      "sha256": "35b66794d013dd6d117fba1094256ecb94a488d4c7f852b23903dbf47d987704"
+    },
+    {
+      "chapter": 40,
+      "title": "File System Implementation",
+      "path": "03-persistence/40-file-implementation.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf",
+      "bytes": 160738,
+      "sha256": "f47b3394d05648303f957234dcdc980023ef7d9e11d2b4d02fc042e7d3e3aef7"
+    },
+    {
+      "chapter": 41,
+      "title": "Fast File System (FFS)",
+      "path": "03-persistence/41-file-ffs.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-ffs.pdf",
+      "bytes": 126553,
+      "sha256": "95b4b1fd00463e78837c1101f1dc0f9416848025eaffdb2a69c3894d5e5f422a"
+    },
+    {
+      "chapter": 42,
+      "title": "FSCK and Journaling",
+      "path": "03-persistence/42-file-journaling.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf",
+      "bytes": 178600,
+      "sha256": "ea284e285705454787f6ea2804af6f62c42839a8bfa58e5ded307961ef459a11"
+    },
+    {
+      "chapter": 43,
+      "title": "Log-structured File System (LFS)",
+      "path": "03-persistence/43-file-lfs.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-lfs.pdf",
+      "bytes": 156049,
+      "sha256": "8c52ffc98c65bcb56198be9e5b7ebb789e86687751553a298d10b25a4712d1f4"
+    },
+    {
+      "chapter": 44,
+      "title": "Flash-based SSDs",
+      "path": "03-persistence/44-file-ssd.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-ssd.pdf",
+      "bytes": 200630,
+      "sha256": "e8de0c6036d75cfb175166c8701055f75c11b576d8283a101ce09bedaf80b223"
+    },
+    {
+      "chapter": 45,
+      "title": "Data Integrity and Protection",
+      "path": "03-persistence/45-file-integrity.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-integrity.pdf",
+      "bytes": 129210,
+      "sha256": "e31b73700e69a738092c571845b3a1e48158c0a01783d7d83deb8d34b2271b52"
+    },
+    {
+      "chapter": 46,
+      "title": "Summary",
+      "path": "03-persistence/46-file-dialogue.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/file-dialogue.pdf",
+      "bytes": 26908,
+      "sha256": "814f38effd995ee73a269d1801e3c7bc476c3d0e9b297772ac34811212bce989"
+    },
+    {
+      "chapter": 47,
+      "title": "Dialogue",
+      "path": "03-persistence/47-dialogue-distribution.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dialogue-distribution.pdf",
+      "bytes": 24634,
+      "sha256": "7a5453c6c30cb6b0b0b7bb2be7bd27cdd0eca264dfa20391bec2197489a69d6a"
+    },
+    {
+      "chapter": 48,
+      "title": "Distributed Systems",
+      "path": "03-persistence/48-dist-intro.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dist-intro.pdf",
+      "bytes": 139215,
+      "sha256": "92986b546ba992cf20b2826b6805d76ac1baa596e91b138fdf56e63eac644a91"
+    },
+    {
+      "chapter": 49,
+      "title": "Network File System (NFS)",
+      "path": "03-persistence/49-dist-nfs.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dist-nfs.pdf",
+      "bytes": 145901,
+      "sha256": "453691aa33cbd62e23b8cb917068857f250003afdb3994682429a0ebcc75b65e"
+    },
+    {
+      "chapter": 50,
+      "title": "Andrew File System (AFS)",
+      "path": "03-persistence/50-dist-afs.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dist-afs.pdf",
+      "bytes": 131483,
+      "sha256": "531c303f5d20944c0f7a253c16a2deaaebeaa1039a7a43336637b0a01345724e"
+    },
+    {
+      "chapter": 51,
+      "title": "Summary",
+      "path": "03-persistence/51-dist-dialogue.pdf",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/dist-dialogue.pdf",
+      "bytes": 23467,
+      "sha256": "9faa7dcf3c1c8a54339bc6561b57601580b0fce75d7d59c5f10ea764ecf1ef12"
+    }
+  ],
+  "code": [
+    {
+      "repository": "https://github.com/remzi-arpacidusseau/ostep-code",
+      "commit": "ba628e3dd929389dcd78c933d330dd5e70ddca85",
+      "path": "code/ostep-code",
+      "archive_url": "https://codeload.github.com/remzi-arpacidusseau/ostep-code/tar.gz/ba628e3dd929389dcd78c933d330dd5e70ddca85",
+      "excluded_directories": [
+        "intro"
+      ]
+    },
+    {
+      "repository": "https://github.com/remzi-arpacidusseau/ostep-homework",
+      "commit": "afb36ca8ddbf81d847d18f6bd18a87f0a18667f2",
+      "path": "code/ostep-homework",
+      "archive_url": "https://codeload.github.com/remzi-arpacidusseau/ostep-homework/tar.gz/afb36ca8ddbf81d847d18f6bd18a87f0a18667f2",
+      "excluded_directories": []
+    }
+  ]
+}
