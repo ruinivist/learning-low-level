@@ -1,0 +1,258 @@
+---
+title: Memory layout of a program
+date: 24Nov26
+---
+
+- first in the table = lower mem address
+
+| Region                          | Origin                            | Permissions            | What Lives Here                                                                          | Lifetime               |
+| :------------------------------ | :-------------------------------- | :--------------------- | :--------------------------------------------------------------------------------------- | :--------------------- |
+| **`.text`** (Code)              | Executable file                   | Read + Execute (`R-X`) | Compiled machine instructions for all your functions.                                    | Entire program         |
+| **`.rodata`** (Read-Only Data)  | Executable file                   | Read only (`R--`)      | String literals (`"Woof!"`), `const` globals, and **C++ `vtable`s**.                     | Entire program         |
+| **`.data`** (Initialized Data)  | Executable file                   | Read + Write (`RW-`)   | Global and `static` variables initialized to a **non-zero** value.                       | Entire program         |
+| **`.bss`** (Uninitialized Data) | Size stored in file; zeroed by OS | Read + Write (`RW-`)   | Global and `static` variables that are uninitialized or explicitly `0`.                  | Entire program         |
+| **Heap** (Dynamic Memory)       | Created by OS at runtime          | Read + Write (`RW-`)   | Anything allocated with `new`/`malloc` (plus internals of `std::vector`, `std::string`). | Until `delete`/`free`  |
+| **Stack** (Call Stack)          | Created by OS at runtime          | Read + Write (`RW-`)   | Local variables, function arguments, and return addresses.                               | Until function returns |
+
+### mechanics of a function call ( the statically bound one )
+
+you can put a function, something as simple as `void hello() {}` in godbold and the assembly will have this label ( or similar ) `_Z5hellov`, over here it's trivial.
+
+For a function in a struct, must not be inline as if no one calls it, it'll be skipped.
+
+```cpp
+struct A {
+    void printHello();
+};
+
+void A::printHello() {}
+```
+
+again there'll be something `_ZN1A10printHelloEv` like.
+
+**every non virtual cpp methon on a class is a syntactic sugar to the "self" like first arg for python**
+
+```cpp
+// 1. Just data — no functions inside
+typedef struct {
+    int age;
+} Dog;
+
+// 2. Equivalent to: void Dog::setAge(int a)
+void Dog_setAge(Dog* self, int a) {
+    self->age = a;
+}
+```
+
+the compiler hardcodes the labels in assembly at compile time => static binding
+
+### mechanics of a function call ( virtual one )
+
+what virtual add is one level of indirection
+
+the normal cpp code
+
+```cpp
+struct Animal {
+    virtual int sound() { return 1; }
+};
+
+struct Dog : Animal {
+    int sound() override { return 2; }
+};
+
+int trigger(Animal* pet) {
+    return pet->sound();
+}
+
+int main() {
+    Dog d;
+    return trigger(&d); // Returns 2
+}
+```
+
+would look like this in C -- in fact, this is how you would do cpp like runtime polymorphism with pure C
+
+```c
+typedef struct Animal Animal;
+
+typedef struct {
+    // what is this gibberish?
+    // https://cdecl.org/?q=int+%28*sound%29%28struct+Animal+*%29%3B
+    // sound as ptr to function taht takes an Animal ptr and returns an int
+    int (*sound)(Animal* self);
+} VTable;
+
+struct Animal {
+    const VTable* vptr;
+};
+
+int Animal_sound(Animal* self) { return 1; }
+int Dog_sound(Animal* self)    { return 2; }
+
+static const VTable Animal_vtable = { Animal_sound };
+static const VTable Dog_vtable    = { Dog_sound };
+
+int trigger(Animal* pet) {
+    return pet->vptr->sound(pet);
+}
+
+int main(void) {
+    Animal d = { &Dog_vtable }; // What Dog's constructor does invisibly
+    return trigger(&d);         // Returns 2
+}
+```
+
+here the binding happens when I put specifically passed the dog vtable to an animal like object. A more complicated example with members is following
+
+```cpp
+struct Animal {
+    int age;
+    virtual int score() { return age; }
+};
+
+struct Dog : Animal {
+    int treats; // New field added by Dog
+    int score() override { return age + treats; }
+};
+
+int trigger(Animal* pet) {
+    return pet->score();
+}
+```
+
+to C it's like
+
+```c
+typedef struct Animal Animal;
+
+typedef struct {
+    int (*score)(Animal* self);
+} VTable;
+
+struct Animal {
+    const VTable* vptr; // Offset 0
+    int age;            // Offset 8
+};
+
+typedef struct {
+    Animal base;        // MUST be the very first member!
+    int treats;         // Appended right after Animal
+} Dog;
+
+int Animal_score(Animal* self) {
+    return self->age;
+}
+
+int Dog_score(Animal* self) {
+    Dog* d = (Dog*)self; // Safe: Dog_vtable is only ever attached to a Dog
+    return d->base.age + d->treats;
+}
+
+static const VTable Animal_vtable = { Animal_score };
+static const VTable Dog_vtable    = { Dog_score };
+
+int trigger(Animal* pet) {
+    return pet->vptr->score(pet);
+}
+
+int main(void) {
+    Dog d = { { &Dog_vtable, 3 }, 10 }; // age = 3, treats = 10
+
+    Animal* pet = (Animal*)&d;          // Zero-cost upcast (same address as &d.base)
+    return trigger(pet);                // Returns 13
+}
+```
+
+The ingenious trick of putting `Animal` first is that due to just raw bytes slicing and casting => object slicing, the conversion becomes effectively free.
+Dog ( inheriting Animal ) is a superset of animal, by keeping the animal members first, we can just interpret that animal part of it in memory via the same offset bytes.
+
+### all I wanted was a cleaner code
+
+These are the situations that lead to either a fat base or the diamond problem.
+
+Say I initially started with an `Animal` and `Dog`, `Cat`, and `Horse`, and like any good design Animal did not generically have `tail`, but given that it was getting duplicated a lot, `tail` was then refactored to belong to `Animal`. Problem is now adding a `Frog` also ends up with a dormant tail and in fact, from now on till eternity, everyone pays for that tail ( in memory ) irrespective of whether it uses it or not.
+
+Dusting the "OOP" books lead you to making an animal as sum of it's "parts" ( limbs and tails ) so we make a "Tailable" and "Walkable" and "Flyable" etc traits ( interfaces with some members ), but this gets you to the diamond problem as if "Walkable" needs to be an "Animal", then you start to have duplicate fields in the derived class, and since there's no way to disambiguate it'll just throw.
+
+cpp has a bandaid which is like "virtual inheritance" but let's avoid that.
+
+The ideal solution here is pure interface + composition. Don't have any inheritance at the interface level, so Walkable is not an Animal. Walkable will hold no members either. The data members can belong to the class itself or separate, idea being that behavior ( what to do with the aggregate data ) is the only thing virtualised.
+
+```cpp
+// 1. Pure Virtual Interfaces: ZERO data members
+struct IWalkable {
+    virtual int walk() = 0;
+    virtual ~IWalkable() = default;
+};
+
+struct ISwimmable {
+    virtual int swim() = 0;
+    virtual ~ISwimmable() = default;
+};
+
+// 2. Reusable Plain Structs (Composition): data + static methods, NO vptrs
+struct Vitals    { int age; };
+struct WalkLogic { int speed; int step()   { return speed; } };
+struct SwimLogic { int speed; int stroke() { return speed; } };
+
+// 3. Duck: implements both interfaces, owns only the data it needs
+struct Duck : IWalkable, ISwimmable {
+    Vitals    vitals;   // Exactly ONE age
+    WalkLogic walker;   // Reused without inheriting from Walker
+    SwimLogic swimmer;  // Reused without inheriting from Swimmer
+
+    int walk() override { return walker.step(); }
+    int swim() override { return swimmer.stroke(); }
+};
+```
+
+TODO: how does it all look in memory for the different cases
+
+### Practice
+
+- Try to justify the placement in the following program
+
+```cpp
+const char* greeting = "Hello"; // Pointer 'greeting' -> .data
+                                // String "Hello"     -> .rodata
+
+int globalScore = 100;          // Non-zero global    -> .data
+int globalBuffer[1000];         // Zero-init global   -> .bss
+
+void play() {                   // Machine code       -> .text
+    static int calls = 0;       // Zero-init static   -> .bss
+    int localHp = 50;           // Local variable     -> Stack
+
+    int* ptr = new int(99);     // Pointer 'ptr'      -> Stack
+                                // The int(99) itself -> Heap
+    delete ptr;
+}
+```
+
+- why do you need BOTH a stack and heap?
+  - stack is fast, small and all in l1 cache, popping and pushing is a single instruction at cpu level ( RSP, stack ptr )
+  - heap is slow, fast, flexible
+- why is data and bss separate? what's the clever trick
+  - since bss is KNOWN to be 0, it just store the size of those zeros. Compare `int grid[1000000] = {1};` vs `int grid[1000000]` in a program, one goes to data and inflates the binary and other to bss
+- What about this program? Surely we can't be running the functiona compile time right? When is it initialised and in what segment?
+  - bss, and `_start`, which calls `__libc_start_main`
+  - these C runtime funcs are linked into every binary
+
+```cpp
+int get_value() { return 0; } // Could return anything at runtime
+static int d = get_value();
+```
+
+- what's the default stack size?
+  - 8MB on most dists, check with `ulimit -s`
+  - what determines the size? os does, but a program can override
+  - so if I make a samlle hello world, I need 8 MB of ram to run that by default?
+    - a little bitof os trickey here, it virtually gives 8MB but only backs the starting few KBs with actual physical ram, as RSP increases, a silent page fault
+      happens once the stack is full and then the os maps more physical pages to keep it going.
+
+- what's with the permission on the different segments?
+- saying that it prevents is true but misses the point, you would then disable them just like you do asserts in prod code
+- isolation was the primary reason it all started, since then it has become a small host of perf and sec hacks
+- what tricks?
+  - for example address 0 in the program space is mapped with 0 perms, right at the end of stack too you have a hidden inaccessible page, reading any of those is an instant throw, and it does not really use any cpu cycles at all, all is built into the mmu
